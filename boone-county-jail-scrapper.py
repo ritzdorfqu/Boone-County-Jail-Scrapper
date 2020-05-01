@@ -55,13 +55,12 @@ def extract_details_url(search_results):
 
     table = soup.find('table', class_='collapse data-table shadow responsive')
 
-    tr_all = table.find_all('tr')[2:180]
+    tr_all = table.find_all('tr', class_=['odd', 'even'])
 
     for tr in tr_all:
         td_all = tr.find_all('td')
-
-    url = td_all[9].find('a').attrs['href']
-    details_urls.append(url)
+        url = td_all[9].find('a').attrs['href']
+        details_urls.append(url)
 
     return details_urls
 
